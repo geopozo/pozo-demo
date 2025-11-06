@@ -5,6 +5,8 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
+    "marimo>=0.17.6",
+    "notebook>=7.4.7",
     "pozo>=0.9.25",
 ]
 

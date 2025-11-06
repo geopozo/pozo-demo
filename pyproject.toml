@@ -5,10 +5,8 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
-    "anywidget>=0.9.18",
-    "ipywidgets>=7.7.2",
-    "kaleido==1.0.0rc13",
-    "lasio>=0.31",
-    "notebook>=7.4.3",
-    "pozo==0.9.25",
+    "pozo>=0.9.25",
 ]
+
+[tool.uv.sources]
+pozo = { git = "https://github.com/geopozo/pozo-py" }

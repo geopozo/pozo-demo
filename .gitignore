@@ -25,3 +25,5 @@ dist/
 .#*
 build/
 frames/
+__marimo__/
+results/

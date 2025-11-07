@@ -1,14 +1,81 @@
+[build-system]
+requires = ["setuptools>=65.0.0", "wheel", "setuptools-git-versioning"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages]
+find = { namespaces = true, where = ["src"] }
+
+[tool.setuptools-git-versioning]
+enabled = true
+
 [project]
 name = "pozo-demo"
-version = "0.1.0"
-description = "Add your description here"
+dynamic = ["version"]
+description = "Exhaustive Pozo Demo Notebook"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
-    "marimo>=0.17.6",
-    "notebook>=7.4.7",
-    "pozo>=0.9.25",
+  "pozo",
+  "notebook>=7.4.7",
 ]
 
 [tool.uv.sources]
-pozo = { git = "https://github.com/geopozo/pozo-py" }
+pozo = { path = "../pozo-py", editable = true }
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.406",
+    "pytest",
+    "pytest-asyncio; python_version < '3.14'",
+    "pytest-asyncio>=1.2.0; python_version >= '3.14'",
+    "pytest-xdist",
+]
+
+[tool.ruff]
+src = ["pozo_demo"]
+extend-include = ["*.ipynb"]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+  # Type annotations and typing style
+  "ANN",      # Ignore missing type annotations (explicit typing not enforced)
+  "RUF012",   # Allow untyped class attributes (consistent with skipping typing)
+
+  # Exceptions and error messages
+  "EM101",       # Allow raising string exceptions (useful for quick debugging)
+  "TRY003",   # Permit long, descriptive error messages in raise statements
+
+  # Docstring formatting
+  "D203",     # Allow no blank line before class docstring (conflicts with D211)
+  "D212",     # Prefer docstring to start on same line as quotes (vs. D213 style)
+
+  # Formatter and linter conflicts
+  "COM812",   # Known conflict with code formatters (trailing comma rules)
+  "ISC001",   # Known conflict with formatters (implicit string concatenation)
+
+  # Return style readability
+  "RET504",   # Allow unnecessary 'else' after return for clarity
+  "RET505",   # Allow unnecessary 'elif' after return for clarity
+  "RET506",   # Allow nested 'else' after return for readability
+  "RET507",   # Allow additional return branches for clarity
+  "RET508",   # Allow return followed by conditional 'else' for readability
+
+  # Readability and opinions
+  "SIM105",   # Allow try/except/pass (explicit is better for clarity)
+  "PT003",    # Keep explicit scope="function" in pytest fixtures for readability
+  "G004",     # Allow f-strings in log messages (readable, low risk)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = [
+              "D", # ignore docstring errors
+              "S101", # allow assert
+              "INP001", # no need for __init__ in test directories
+              "T201", # if we're printing in tests, there is a reason
+            ]
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+include = ["pozo_demo"]

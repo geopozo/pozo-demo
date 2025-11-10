@@ -27,3 +27,5 @@ build/
 frames/
 __marimo__/
 results/
+notebook_integration_results/
+litesite/

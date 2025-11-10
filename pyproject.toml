@@ -20,7 +20,7 @@ dependencies = [
 ]
 
 [tool.uv.sources]
-pozo = { path = "../pozo-py", editable = true }
+pozo = { path = "../pozo-py.git", editable = true }
 
 [dependency-groups]
 dev = [

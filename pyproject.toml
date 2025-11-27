@@ -19,9 +19,6 @@ dependencies = [
   "notebook>=7.4.7",
 ]
 
-[tool.uv.sources]
-pozo = { path = "../pozo-py.git", editable = true }
-
 [dependency-groups]
 dev = [
     "pyright>=1.1.406",
@@ -30,6 +27,22 @@ dev = [
     "pytest-asyncio>=1.2.0; python_version >= '3.14'",
     "pytest-xdist",
 ]
+dev-nbtest = [
+  "autokernel",
+  "notebook>=7.4.7",
+  "marimo>=0.17.6",
+  "jupyterlite-core>=0.6.4",
+  "jupyterlite-pyodide-kernel>=0.6.1",
+  "jupyterlab>=4.4.10",
+]
+
+[tool.uv.sources.pozo]
+path = "../pozo-py.git"
+editable = true
+
+[tool.uv.sources.autokernel]
+path = "/home/ajp/projects/pozo/autokernel.git"
+editable = true
 
 [tool.ruff]
 src = ["pozo_demo"]

@@ -13,10 +13,10 @@ name = "pozo-demo"
 dynamic = ["version"]
 description = "Exhaustive Pozo Demo Notebook"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 dependencies = [
   "pozo",
-  "notebook>=7.4.7",
+  "notebook>=7.5.0",
 ]
 
 [dependency-groups]
@@ -29,11 +29,12 @@ dev = [
 ]
 dev-nbtest = [
   "autokernel",
-  "notebook>=7.4.7",
+  "notebook>=7.5.0",
   "marimo>=0.17.6",
-  "jupyterlite-core>=0.6.4",
+  "jupyterlab>=4.5.0",
+  "jupyterlite-core>=0.7.0",
   "jupyterlite-pyodide-kernel>=0.6.1",
-  "jupyterlab>=4.4.10",
+  "jupyterlab-hybrid-kernels>=0.2.0",
 ]
 
 [tool.uv.sources.pozo]

@@ -29,3 +29,4 @@ __marimo__/
 results/
 notebook_tester_workspace/
 .jupyterlite.doit.db
+.cache/

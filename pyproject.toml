@@ -15,8 +15,8 @@ description = "Exhaustive Pozo Demo Notebook"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-  "pozo",
-  "notebook>=7.5.0",
+  #  "pozo", # not yet!!
+  "ipython",
   "rich>=14.2.0",
 ]
 

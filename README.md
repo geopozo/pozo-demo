@@ -1,6 +1,6 @@
 # Pozo Demo
 
-Here we demonstrate pozo-py's features and shows off our roadmap for future
+Here we demonstrate pozo-py's features and show off our roadmap for future
 development.
 
 This is where we:

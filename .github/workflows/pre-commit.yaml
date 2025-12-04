@@ -14,7 +14,7 @@ jobs:
         run: uv venv --seed
 
       - name: Install pre-commit
-        run: pip install pre-commit
+        run: uv tool install pre-commit
 
       - name: Run pre-commit on all files
         run: pre-commit run --all-files

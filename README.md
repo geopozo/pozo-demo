@@ -1,7 +1,7 @@
 # Pozo Demo
 
-Pozo Demo demonstrates of pozo-py's features and shows off our ROADMAP for
-future development.
+Here we demonstrate pozo-py's features and shows off our roadmap for future
+development.
 
 This is where we:
 

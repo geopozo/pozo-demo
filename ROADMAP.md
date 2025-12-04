@@ -1,5 +1,7 @@
 # Roadmap
 
-The notebook is a sort of roadmap for all features that we want in pozo.
+See [the live roadmap](https//geopozo.com/roadmap) for working and planned
+features.
 
-But we do have more complicated roadmapping for pozo.
+See [github issues](https://github.com/geopozo/pozo-demo/issues) for suggested
+features.

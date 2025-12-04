@@ -11,7 +11,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Seed virtual environment
-        run: uv venv --seed
+        run: uv sync --no-sources
 
       - name: Install pre-commit
         run: uv tool install pre-commit

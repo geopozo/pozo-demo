@@ -1,9 +1,8 @@
 # Pozo Demo
 
-Here we demonstrate pozo-py's features and show off our roadmap for future
-development.
+Here we demonstrate pozo-py's features and show off planned features.
 
-This is where we:
+We also:
 
 1. Run integration tests across several different environments.
 2. Build our public [roadmap document](www.geopozo.com/roadmap).

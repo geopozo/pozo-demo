@@ -1,4 +1,3 @@
----
 name: test-linux-only
 on:
   push:

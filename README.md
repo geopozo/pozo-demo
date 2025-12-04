@@ -1,16 +1,16 @@
 # Pozo Demo
 
-Pozo Demo functions as a demonstration of GeoPozo's open source capabilities as
-well as a ROADMAP for future development.
+Pozo Demo demonstrates of pozo-py's features and shows off our ROADMAP for
+future development.
 
-This repository is used to
+This is where we:
 
-1. Test pozo-py across several different environments
-2. Provide our public [roadmap document](www.geopozo.com/roadmap)
-3. Allow users to suggest features in [issues](https://github.com/geopozo/pozo-demo/issues)
+1. Run integration tests across several different environments.
+2. Build our public [roadmap document](www.geopozo.com/roadmap).
+3. Allow users to suggest features in
+   [issues](https://github.com/geopozo/pozo-demo/issues).
 
-Once we've decided to incorporate the issue into our roadmap, we close it and
-add it to the demo- failing or not.
+Once a suggest feature is added to the demo, we close it the issue.
 
 The [main repository](https://github.com/geopozo/pozo-py) is a better place to
 report bugs that need to be fixed.

@@ -10,9 +10,9 @@ This is where we:
 3. Allow users to suggest features in
    [issues](https://github.com/geopozo/pozo-demo/issues).
 
-Once a suggest feature is added to the demo, we close it the issue.
+Once a suggested feature is added to the demo, we close the issue.
 
 The [main repository](https://github.com/geopozo/pozo-py) is a better place to
-report bugs that need to be fixed.
+report bugs for fixing.
 
 Thank you!

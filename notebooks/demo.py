@@ -688,7 +688,7 @@ def _(mo):
     on how to use each one, we'll be showing you here patterns you can use to
     interact with some of the common ones.
 
-    ### :snake: Numpy
+    ### 🐍 Numpy
 
     Numpy sometimes modifies data in-place, sometimes creates a copy. Its best to
     use a reference document or talk to AI so you know.

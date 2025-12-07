@@ -95,8 +95,10 @@ ignore = [
               "T201", # if we're printing in tests, there is a reason
             ]
 "notebooks/*.py" = [
-  "LR1711", # useless return
-  "BLE001" # do not catch blind exception
+  "PLR1711", # useless return
+  "BLE001", # do not catch blind exception
+  "PLC0415", # Import outside top loop
+  "N803", # Path arugment case (marimo decision)
 ]
 
 [tool.poe]

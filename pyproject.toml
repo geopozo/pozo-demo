@@ -94,6 +94,10 @@ ignore = [
               "INP001", # no need for __init__ in test directories
               "T201", # if we're printing in tests, there is a reason
             ]
+"notebooks/*.py" = [
+  "LR1711", # useless return
+  "BLE001" # do not catch blind exception
+]
 
 [tool.poe]
 executor.type = "simple"

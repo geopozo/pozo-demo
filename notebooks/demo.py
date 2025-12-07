@@ -8,10 +8,8 @@ app = marimo.App()
 
 @app.cell(hide_code=True)
 async def _():
-    ## The following more advanced code is so that
-    # our demo can run in many environments.
-    ## Jupyter and marimo both offer web-only python,
-    # but they use slightly different dependencies
+    ## The following more advanced code allows this notebook to run everywhere.
+    ## Jupyter/marimo offer web-only python, using slightly different pips.
     import sys
 
     if "pyodide" in sys.modules:  # Are we running pyodide- browser based python?
@@ -543,11 +541,6 @@ def _(axis, pozo, rich_error, trace, track):
         # what about using plotly traces
     except Exception as e:
         rich_error(e)
-    return
-
-
-@app.cell
-def _():
     return
 
 

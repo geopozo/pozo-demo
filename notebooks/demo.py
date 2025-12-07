@@ -245,8 +245,8 @@ def _(las, pozo, rich_error):
 def _(las, pozo, rich_error):
     try:
         # This graph is also a preview, but a bit more interactive.
-        # All render functions take an exclude OR include argument with a list/tuple
-        # of mnemonics. You can't include and exclude at the same time.
+        # All render functions take an exclude or include argument with a list/tuple
+        # of mnemonics, but neve both.
         pozo.Graph(las).render_summary(exclude=["GR"])
     except Exception as e:
         rich_error(e)
@@ -258,7 +258,7 @@ def _(mo):
     mo.md(r"""
     ### 🛢️ Main Renderer
 
-    The main renderer produces the largest most interactive graph, but its not
+    The main renderer produces the largest most interactive graph. Its not
     useful until you customize it, but we'll show it uncustomized first.
 
     Furthermore, after we talk about these basic customizations and the internal
@@ -281,9 +281,9 @@ def _(las, pozo, rich_error):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    ## 🎨 Designing your Graph
+    ## 🎨 Designing your Graph *Layout*
 
-    There a couple ways to customize your graph. You can specify a template to
+    There a couple ways to customize your graph *layout*. You can specify a template to
     use everytime, or you can modify it bit by bit with functions.
 
     ### 🧩 Simple Template
@@ -337,7 +337,7 @@ def _(Path, las, pozo, rich_error):
                 },
                 "CALI": {
                     "mnemonics": ["CALI"],
-                    "optional": True,  # Hide the axis if the mnemonic can"t be found
+                    "optional": True,  # Hide the axis if the mnemonic can't be found
                     "theme": {
                         ...,  # A custom theme for this axis (see the theming section)
                     },
@@ -356,23 +356,28 @@ def _(Path, las, pozo, rich_error):
                 },
             },
         }
+
+        # Combine the tracks into a dictionary
         template_dict = {
             "tracks": [track1, "y", track2],
             "theme": ...,  # Set a theme on the whole graph
         }
+
+        # Turn the dictionary into a template (verifies structure)
         template = pozo.Template(
             template_dict,
-        )  # this will provide helpful messages if there are errors
+        )
 
+        # You can save it
         template_file = Path("./template.json")
         template_file.dump_text(
             template.to_json(),
-        )  # you can now share this file!
+        )  # And share it!
 
         graph = pozo.Graph(
             las,
-            template=template_file,
-        )  # template_dict and template are also acceptable values
+            template=template_file,  # specify the dict, Template, or JSON path
+        )
 
     except Exception as e:  # or []
         rich_error(e)
@@ -386,8 +391,7 @@ def _(mo):
 
     If you've specified your template in python, you can use lambda functions and
     regular python functions as values. The functions are passed the entire curve-
-    not element by element, and a dictionary of all the other curves if you need to
-    use them as inputs.
+    not element by element, and a dict of the other curves if you need them.
 
     ```python
     def identity(curve, graph): # my function, the identity function f(x) = x
@@ -443,7 +447,7 @@ def _(mo):
     def my_function(curve, graph):
         graph.state["my_key"] = "some_value" # accessible to other functions
 
-         # idempotent- every curve runs only onceregardless of number of calls
+         # idempotent- every curve function runs only once
         graph.run_curve_function("AxisName")
     ```
 
@@ -542,6 +546,11 @@ def _(axis, pozo, rich_error, trace, track):
     return
 
 
+@app.cell
+def _():
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -555,8 +564,8 @@ def _(mo):
     2. Non-standard unit abbreviations
     3. A whole bad LAS file with missing data
 
-    There is las_check which can verify a las file, you can also open LAS files
-    and fix simple things (its ASCII text)
+    There is las_check package which can verify a las file, you can also open the
+    LAS files and fix simple things (it's a text file).
 
     ### 🔬 Unit Analysis
     """)
@@ -593,15 +602,15 @@ def _(mo):
 
 
 @app.cell
-def _(graph2, pozo, rich_error):
+def _(graph, pozo, rich_error):
     try:
         # Create a cross plot
         xp = pozo.CrossPlot(
-            x=graph2.get_traces(pozo.HasLog("NPHI"))[0],
-            y=graph2.get_traces(pozo.HasLog("RHOB"))[0],
-            colors={"depth": graph2.get_trace("GR").get_depth()},
-            xrange=(45, -15),
-            yrange=(1.95, 2.945),
+            x=graph.get_trace("NPHI"),
+            y=graph.get_trace("RHOB"),
+            colors={"depth": graph.get_trace("GR").get_depth()},
+            xrange=(45, -15),  # should take units
+            yrange=(1.95, 2.945),  # should take units
             size=800,
             depth_range=(1100, 1300),
         )
@@ -697,9 +706,9 @@ def _(mo):
 @app.cell
 def _(graph, np, rich_error):
     try:
-        data_reference = graph.get_trace("MNEMONIC").get_data()
+        data = graph.get_trace("MNEMONIC").get_data()
 
-        data_reference += 10
+        data += 10
         # the graph is now changed!
 
         graph.render_spark(include=["MNEMONIC"])
@@ -708,7 +717,7 @@ def _(graph, np, rich_error):
         # But a lot of current opinion is that making data-science pipelines
         # like this is sloppy, even if slightly more memorize optimized. Let's go back:
 
-        data_reference -= 10  # undo the + 10
+        data -= 10  # undo the + 10
 
         # Lets redo it in a more popular style:
 
@@ -742,7 +751,7 @@ def _(mo):
 
 
 @app.cell
-def _(graph, np, original_trace, rich_error):
+def _(graph, np, rich_error):
     try:
         original_trace = graph.get_trace("MNEMONIC")  # get the trace
 
